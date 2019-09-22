@@ -6,29 +6,42 @@ using namespace std;
 TEST(SequenceTest, 2_4_6) 
 {
 	int input [] = { 2, 4, 6 };
-	EXPECT_EQ(2, isArithmeticSequence(input));
+	EXPECT_EQ(2, isArithmeticSequence(input, 3));
 }
 
-// TEST(SequenceTest, 2_3_7_9) 
-// {
-// 	vector<int> input = { 2, 3, 7, 9 };
-// 	vector<int> expectedResult = { 1, 9, 7, 63, 3, 27, 21, 189, 2, 18, 14, 126, 6, 54, 42, 378 };
-// 	vector<int> studentResult = AllProducts(input);
-// 	EXPECT_TRUE(compareVectors(expectedResult, studentResult));
-// }
+TEST(SequenceTest, 1_2_4_6) 
+{
+	int input [] = {1, 2, 4, 6};
+	EXPECT_EQ(-1, isArithmeticSequence(input, 4));
+}
 
-// TEST(SequenceTest, 2_7_13) 
-// {
-// 	vector<int> input = {2, 7, 13};
-// 	vector<int> expectedResult = { 1, 2, 7, 13, 14, 26, 91, 182 };
-// 	vector<int> studentResult = AllProducts(input);
-// 	EXPECT_TRUE(compareVectors(expectedResult, studentResult));
-// }
+TEST(SequenceTest, 2_4_6_9) 
+{
+	int input [] = {2, 4, 6, 9};
+	EXPECT_EQ(-1, isArithmeticSequence(input, 4));
+}
 
-// TEST(SequenceTest, 17_23_29) 
-// {
-// 	vector<int> input = { 17, 23, 29 };
-// 	vector<int> expectedResult = { 1, 17, 23, 29, 391, 493, 667, 11339 };
-// 	vector<int> studentResult = AllProducts(input);
-// 	EXPECT_TRUE(compareVectors(expectedResult, studentResult));
-// }
+TEST(SequenceTest, 0_3_6_9) 
+{
+	int input [] = {0, 3, 6, 9};
+	EXPECT_EQ(3, isArithmeticSequence(input, 4));
+}
+
+
+TEST(SequenceTest, 3_0_3_6_9_neg) 
+{
+	int input [] = {-3, 0, 3, 6, 9};
+	EXPECT_EQ(3, isArithmeticSequence(input, 5));
+}
+
+TEST(SequenceTest, 5) 
+{
+	int input [] = {5};
+	EXPECT_EQ(0, isArithmeticSequence(input, 1));
+}
+
+TEST(SequenceTest, empty) 
+{
+	int input [] = {};
+	EXPECT_EQ(0, isArithmeticSequence(input, 0));
+}

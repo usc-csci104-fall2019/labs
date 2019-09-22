@@ -2,6 +2,6 @@
 
 using namespace std;
 
-int isArithmeticSequence(int arr[]) {
-	return 2;
+int isArithmeticSequence(int arr[], int size) {
+
 }
