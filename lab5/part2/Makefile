@@ -3,8 +3,9 @@ CPPFLAGS = -g -Wall -std=c++11
 BIN_DIR = bin
 GTEST_LL = -I /usr/include/gtest/ -l gtest -l gtest_main -pthread
 
-test: FORCE $(BIN_DIR) $(BIN_DIR)/sequenceTest
+test: FORCE $(BIN_DIR) $(BIN_DIR)/sequenceTest $(BIN_DIR)/bincombosTest
 	 ./$(BIN_DIR)/sequenceTest
+	 ./$(BIN_DIR)/bincombosTest
 
 $(BIN_DIR)/sequenceTest: $(BIN_DIR)/sequenceTest.o $(BIN_DIR)/sequence.o
 	$(CC) $(CPPFLAGS) $^ $(GTEST_LL) -o $@
@@ -13,6 +14,15 @@ $(BIN_DIR)/sequenceTest.o: sequenceTest.cpp
 	$(CC) $(CPPFLAGS) -c $< -o $@
 
 $(BIN_DIR)/sequence.o: sequence.cpp sequence.h
+	$(CC) $(CPPFLAGS) -c $< -o $@
+
+$(BIN_DIR)/bincombosTest: $(BIN_DIR)/bincombosTest.o $(BIN_DIR)/bincombos.o
+	$(CC) $(CPPFLAGS) $^ $(GTEST_LL) -o $@
+
+$(BIN_DIR)/bincombosTest.o: bincombosTest.cpp
+	$(CC) $(CPPFLAGS) -c $< -o $@
+
+$(BIN_DIR)/bincombos.o: bincombos.cpp bincombos.h
 	$(CC) $(CPPFLAGS) -c $< -o $@
 
 $(BIN_DIR): 
@@ -27,3 +37,7 @@ clean:
 
 sequenceTest: $(BIN_DIR) $(BIN_DIR)/sequenceTest
 	 ./$(BIN_DIR)/sequenceTest
+
+bincombosTest: $(BIN_DIR) $(BIN_DIR)/bincombosTest
+	./$(BIN_DIR)/bincombosTest
+
