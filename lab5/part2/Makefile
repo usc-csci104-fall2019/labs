@@ -35,6 +35,15 @@ $(BIN_DIR)/sumTest.o: sumTest.cpp
 $(BIN_DIR)/LinkedList.o: LinkedList.cpp LinkedList.h
 	$(CC) $(CPPFLAGS) -c $< -o $@
 
+$(BIN_DIR)/searchTest: $(BIN_DIR)/searchTest.o $(BIN_DIR)/search.o
+	$(CC) $(CPPFLAGS) $^ $(GTEST_LL) -o $@
+
+$(BIN_DIR)/searchTest.o: searchTest.cpp
+	$(CC) $(CPPFLAGS) -c $< -o $@
+
+$(BIN_DIR)/search.o: search.cpp
+	$(CC) $(CPPFLAGS) -c $< -o $@
+
 $(BIN_DIR): 
 	mkdir $(BIN_DIR)
 
@@ -53,4 +62,7 @@ bincombosTest: $(BIN_DIR) $(BIN_DIR)/bincombosTest
 
 sumTest: $(BIN_DIR) $(BIN_DIR)/sumTest
 	 ./$(BIN_DIR)/sumTest
+
+searchTest: $(BIN_DIR) $(BIN_DIR)/searchTest
+	 ./$(BIN_DIR)/searchTest
 
