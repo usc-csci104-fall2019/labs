@@ -3,10 +3,11 @@ CPPFLAGS = -g -Wall -std=c++11
 BIN_DIR = bin
 GTEST_LL = -I /usr/include/gtest/ -l gtest -l gtest_main -pthread
 
-test: FORCE $(BIN_DIR) $(BIN_DIR)/sequenceTest $(BIN_DIR)/bincombosTest $(BIN_DIR)/sumTest
+test: FORCE $(BIN_DIR) $(BIN_DIR)/sequenceTest $(BIN_DIR)/bincombosTest $(BIN_DIR)/sumTest $(BIN_DIR)/searchTest
 	 ./$(BIN_DIR)/sequenceTest
 	 ./$(BIN_DIR)/bincombosTest
 	 ./$(BIN_DIR)/sumTest
+	 ./$(BIN_DIR)/searchTest
 
 $(BIN_DIR)/sequenceTest: $(BIN_DIR)/sequenceTest.o $(BIN_DIR)/sequence.o
 	$(CC) $(CPPFLAGS) $^ $(GTEST_LL) -o $@
@@ -41,7 +42,7 @@ $(BIN_DIR)/searchTest: $(BIN_DIR)/searchTest.o $(BIN_DIR)/search.o
 $(BIN_DIR)/searchTest.o: searchTest.cpp
 	$(CC) $(CPPFLAGS) -c $< -o $@
 
-$(BIN_DIR)/search.o: search.cpp
+$(BIN_DIR)/search.o: search.cpp search.h
 	$(CC) $(CPPFLAGS) -c $< -o $@
 
 $(BIN_DIR): 
