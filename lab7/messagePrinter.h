@@ -1,5 +1,5 @@
 #include <string>
-#include <vector>
+#include <map>
 
 /*
 You've created a popular app that makes requests to a server. Sometimes, the server sends back error messages.
@@ -34,9 +34,8 @@ logger.shouldPrintMessage(11,"foo"); returns true;
 class Logger {
 public:
     /** Initialize your data structure here. */
-    Logger() {
-        
-    }
+    std::map<std::string,int> messages;
+    Logger();
     
     bool shouldPrintMessage(int timestamp, std::string message);
 };

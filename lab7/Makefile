@@ -26,10 +26,13 @@ $(BIN_DIR)/validParenTest.o: validParenTest.cpp
 $(BIN_DIR)/validParen.o: validParen.cpp validParen.h
 	$(CC) $(CPPFLAGS) -c $< -o $@
 
-$(BIN_DIR)/messagePrinterTest: $(BIN_DIR)/messagePrinterTest.o
+$(BIN_DIR)/messagePrinterTest: $(BIN_DIR)/messagePrinterTest.o $(BIN_DIR)/messagePrinter.o
 	$(CC) $(CPPFLAGS) $^ $(GTEST_LL) -o $@
 
 $(BIN_DIR)/messagePrinterTest.o: messagePrinterTest.cpp
+	$(CC) $(CPPFLAGS) -c $< -o $@
+
+$(BIN_DIR)/messagePrinter.o: messagePrinter.cpp messagePrinter.h
 	$(CC) $(CPPFLAGS) -c $< -o $@
 
 $(BIN_DIR): 
