@@ -1,6 +1,11 @@
 #include "stones.h"
 
+#include <algorithm>
+
 using namespace std;
 
-vector<int> AllProducts(const vector<int>& primes) {
-}
+int lastStoneWeight(vector<int>& stones) {
+ 	//Add Implementation Here
+
+ 	return 0;
+ }
